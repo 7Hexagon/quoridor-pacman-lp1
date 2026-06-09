@@ -1,0 +1,23 @@
+# Ejecutables
+quoridor_pacman
+*.exe
+*.out
+
+# Objetos de compilacion
+*.o
+
+# Eclipse
+.metadata/
+.settings/
+.project
+.cproject
+Debug/
+Release/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Backups
+*.bak
+*.tmp
