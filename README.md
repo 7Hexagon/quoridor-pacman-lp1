@@ -165,7 +165,7 @@ Cada fantasma tiene una dificultad independiente.
 | 2          | Persigue a Pac-Man reduciendo distancia          |
 | 3          | Persigue a Pac-Man y puede usar muros temporales |
 
-La dificultad solo afecta al modo **IA vs Player**, ya que no se puede afectar la mente del jugador en **Player vs Player**
+La dificultad solo afecta al modo **IA vs Player**, ya que no se puede afectar la mente del jugador en **Player vs Player**.
 
 
 ---
