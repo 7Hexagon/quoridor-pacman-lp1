@@ -6,21 +6,8 @@ El proyecto incluye configuracion de partida, mapas predefinidos, editor de mapa
 
 ---
 
-## Captura
-
-Si agregas una imagen del juego en la carpeta `assets/readme/`, podes mostrarla asi:
-
-```md
 <img src="assets/readme/screenshot.png" width="750">
-```
 
-Ejemplo recomendado de estructura:
-
-```text
-assets/
-└─ readme/
-   └─ screenshot.png
-```
 
 ---
 
@@ -28,11 +15,12 @@ assets/
 
 | Caracteristica                         | Estado       |
 | -------------------------------------- | ------------ |
-| Juego en C con raylib                  | Implementado |
+| Pantallas en C con raylib              | Implementado |
 | Tablero dinamico segun mapa            | Implementado |
 | 3 mapas predefinidos                   | Implementado |
 | Editor de mapas                        | Implementado |
 | Guardado y carga de mapas              | Implementado |
+| Funcionalidad del jugador              | Implementado |
 | Modo IA vs Player                      | Implementado |
 | Modo Player vs Player                  | Implementado |
 | Dificultad por fantasma                | Implementado |
@@ -41,6 +29,9 @@ assets/
 | Muros temporales con vida              | Implementado |
 | Sonido opcional                        | Implementado |
 | Soporte para gamepad                   | Implementado |
+| Override del esc                       |   Pendiente  |
+| Menu principal                         |   Pendiente  |
+| Animaciones                            |   Pendiente  |
 
 ---
 
@@ -71,7 +62,7 @@ C/
 
 ## Dependencias
 
-En Ubuntu, Linux Mint o Debian:
+En Ubuntu, que es el unico verificable:
 
 ```bash
 sudo apt update
@@ -93,13 +84,11 @@ sudo make install
 sudo ldconfig
 ```
 
-Si raylib ya esta instalada, este paso se puede omitir.
-
 ---
 
 ## Compilacion
 
-Desde la raiz del proyecto, es decir, desde la carpeta `C/`:
+Desde la raiz del proyecto, la carpeta `C/`:
 
 ```bash
 gcc src/TrabajoPractico1/main1.c -o quoridor_pacman -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
@@ -125,8 +114,6 @@ Es importante ejecutar el programa desde la raiz del proyecto para que encuentre
 
 ## Archivos de sonido
 
-El programa tiene soporte opcional para sonido.
-
 Rutas usadas:
 
 ```text
@@ -134,8 +121,6 @@ assets/music/background.wav
 assets/sounds/eat.wav
 assets/sounds/death.wav
 ```
-
-Si estos archivos existen, el juego reproduce musica de fondo y efectos de sonido.
 
 Si no existen, el juego funciona normalmente sin sonido.
 
@@ -180,9 +165,8 @@ Cada fantasma tiene una dificultad independiente.
 | 2          | Persigue a Pac-Man reduciendo distancia          |
 | 3          | Persigue a Pac-Man y puede usar muros temporales |
 
-La dificultad solo afecta al modo **IA vs Player**.
+La dificultad solo afecta al modo **IA vs Player**, ya que no se puede afectar la mente del jugador en **Player vs Player**
 
-En modo **Player vs Player**, los fantasmas son controlados por un jugador humano.
 
 ---
 
@@ -192,9 +176,9 @@ En modo **Player vs Player**, los fantasmas son controlados por un jugador human
 | --------------- | ------------------------- | ----------------------- |
 | Elegir opcion   | Flechas arriba/abajo      | D-Pad arriba/abajo      |
 | Cambiar valor   | Flechas izquierda/derecha | D-Pad izquierda/derecha |
-| Iniciar partida | Enter                     | X / Cross / Options     |
+| Iniciar partida | Enter                     | X / Options     |
 | Abrir editor    | E                         | R1                      |
-| Volver o salir  | ESC                       | Circle / Select         |
+| Volver o salir  | ESC                       | Circulo / Select         |
 
 ---
 
@@ -203,10 +187,10 @@ En modo **Player vs Player**, los fantasmas son controlados por un jugador human
 | Accion            | Teclado | Gamepad             |
 | ----------------- | ------- | ------------------- |
 | Mover ficha       | Flechas | D-Pad               |
-| Activar modo muro | M       | Triangle            |
-| Terminar turno    | Enter   | X / Cross / Options |
-| Reiniciar partida | R       | Square              |
-| Volver al menu    | ESC     | Circle              |
+| Activar modo muro | M       | Triangulo           |
+| Terminar turno    | Enter   | X / Options         |
+| Reiniciar partida | R       | Cuadrado            |
+| Volver al menu    | ESC     | Circulo             |
 
 ---
 
@@ -223,7 +207,7 @@ En modo **Player vs Player**, los fantasmas son controlados por un jugador human
 | Muro hacia la derecha | H           | Teclado    |
 | Muro hacia abajo      | V           | Teclado    |
 | Guardar mapa          | S           | L1         |
-| Volver al menu        | Enter / ESC | X / Circle |
+| Volver al menu        | Enter / ESC | X / Circulo|
 
 El mapa creado desde el editor se guarda en:
 
@@ -271,9 +255,11 @@ END
 
 ## Reinicio y fin de partida
 
-Durante la partida se puede presionar `R` o `Square` para reiniciar.
+Durante la partida se puede presionar `R` o `Cuadrado` para reiniciar.
 
 Al terminar la partida, se muestra el ganador y el nivel alcanzado por Pac-Man.
+
+# Rangos alcanzables
 
 | Pac-bolas comidas | Nivel                |
 | ----------------- | -------------------- |
@@ -287,10 +273,6 @@ Al terminar la partida, se muestra el ganador y el nivel alcanzado por Pac-Man.
 ## Notas de entrega
 
 El proyecto usa un solo archivo principal, `main1.c`, para facilitar la compilacion en la computadora del docente.
-
-Los archivos de sonido son opcionales.
-
-Los mapas predefinidos se encuentran en la carpeta `maps/`.
 
 El programa debe ejecutarse desde la raiz del proyecto para que las rutas relativas funcionen correctamente.
 
